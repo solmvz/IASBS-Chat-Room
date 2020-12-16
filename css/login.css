@@ -1,0 +1,114 @@
+/* Bordered form */
+form 
+{
+    font-family: Tahoma;
+    border: 5px solid thistle;
+    border-radius: 2em;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] 
+{
+    font-family: Tahoma;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(90, 2, 90);
+    box-sizing: border-box;
+    border-radius: 1em;
+}
+
+/* Set a style for all buttons */
+button 
+{
+    background-color: rgb(90, 2, 90);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 1em;
+}
+
+/* Add a hover effect for buttons */
+button:hover 
+{
+    opacity: 0.9;
+}
+
+/* Add padding to containers */
+.container 
+{
+    width: 100%;
+    padding: 16px;
+}
+
+p
+{
+    margin-top: 0;
+    text-align: left;
+    color: tomato;
+    font-size: small;
+}
+
+.error
+{
+    margin-bottom: 5px;
+    color: tomato;
+    font-size: small;
+    font-family: Tahoma;
+}
+
+label
+{
+    font-weight: bold;
+    font-family: Tahoma;
+    float: left;
+}
+
+.imgheader
+{
+    height: 100%;
+    max-width: 100%;
+    border-radius: 2em;
+}
+
+.loginContainer
+{
+    width: 50%;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.Section
+{
+    position:relative;
+    height: auto;
+}
+
+.Menu
+{
+    position:relative;
+    left:0px;
+    width:30%;
+    height: auto;
+}
+
+.Content
+{
+    text-align: center;
+    position:relative;
+    right:0px;
+    width:100%;
+}
+
+@media (max-width: 600px) 
+{
+    .loginContainer
+    {
+        width: 100%;
+    }
+}

@@ -1,0 +1,30 @@
+<div class="Content">
+    <div class="loginContainer">
+        <span class="error"><?php echo $Message; ?></span>
+        <form name="register_form" action="register.php" method="post" onsubmit="return Validate_Form()">
+            <div class="container">
+                <label>Name</label>
+                <input type="text" placeholder="Enter Name" name="uiName" value="<?php echo $uiName_cv; ?>"><br/>
+                <p id="error1"></p>
+                <label>Family</label>
+                <input type="text" placeholder="Enter Family" name="uiFamily" value="<?php echo $uiFamily_cv; ?>"><br/>
+                <p id="error2"></p>
+                <label>Email</label>
+                <input type="text" placeholder="Enter Email" name="uiEmail" value="<?php echo $uiEmail_cv; ?>"><br/>
+                <p id="error3"></p>
+                <label>Username</label>
+                <input type="text" placeholder="Enter Username" name="uiUsername" value="<?php echo $uiUsername_cv; ?>"><br/>
+                <p id="error4"></p>
+                <label>Password</label>
+                <input type="text" placeholder="Enter Password" name="uiPassword"><br/>
+                <p id="error5"></p>
+                <label>Confirm Password</label>
+                <input type="text" placeholder="Confirm Password" name="uiConfirmPassword"><br/>
+                <p id="error6"></p>
+                <button type="submit" name="uiRegister">Register</button>
+                
+                <a href="index.php">Login</a>
+            </div>
+        </form>
+    </div>
+</div>

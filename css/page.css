@@ -1,0 +1,21 @@
+.Section
+{
+    position:relative;
+    height: 200px;
+}
+
+.Menu
+{
+    position:absolute;
+    left:0px;
+    width:30%;
+    height:200px;
+}
+
+.Content
+{
+    position:absolute;
+    right:0px;
+    width:70%;
+    height:200px;
+}
