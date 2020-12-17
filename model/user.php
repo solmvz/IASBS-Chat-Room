@@ -18,11 +18,7 @@ class user
     public function setUsername($username) { $this->username = $username; } 
 
     function getPassword() { return $this->password; }
-
-    function setPassword($password)
-    {
-        $this->password = md5($password);
-    }
+    function setPassword($password){ $this->password = md5($password); }
 
     function getEmail() { return $this->email; }
     public function setEmail($email) { $this->email = $email; } 
@@ -69,5 +65,25 @@ class user
             return true;
         }
         return false;
+    }
+
+    public function jsonSerialize(){
+        return get_object_vars($this);
+    }
+
+    public static function GetAllUsers()
+    {
+        $result = database::ExecuteQuery('GetAllUsers');
+        $usersList = array();
+        $i = 0;
+        while ($row = $result->fetch_array())
+        {
+            $tempUser = new user();
+            $tempUser->setUsername($row['username']);
+            $tempUser->setName($row['name']);
+            $tempUser->setFamily($row['family']);
+            $usersList[$i++] = $tempUser->jsonSerialize();
+        }
+        return $usersList;
     }
 }
