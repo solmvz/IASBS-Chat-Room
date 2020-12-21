@@ -8,19 +8,19 @@ class user
     private $password;
     private $email;
 
-    function getName() { return $this->name; }
-    function setName($name) { $this->name = $name; }
+    public function getName() { return $this->name; }
+    public function setName($name) { $this->name = $name; }
 
-    function getFamily() { return $this->family; } 
-    function setFamily($family) { $this->family = $family; }
+    public function getFamily() { return $this->family; } 
+    public function setFamily($family) { $this->family = $family; }
 
-    function getUsername() { return $this->username; }
+    public function getUsername() { return $this->username; }
     public function setUsername($username) { $this->username = $username; } 
 
-    function getPassword() { return $this->password; }
-    function setPassword($password){ $this->password = md5($password); }
+    public function getPassword() { return $this->password; }
+    public function setPassword($password){ $this->password = md5($password); }
 
-    function getEmail() { return $this->email; }
+    public function getEmail() { return $this->email; }
     public function setEmail($email) { $this->email = $email; } 
 
     public function checkUserPass()
