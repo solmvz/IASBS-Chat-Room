@@ -2,39 +2,47 @@
 
 require "config.php";
 require "model/user.php";
+require "model/chat.php";
 include $ShareFolderPath."header.html";
 include $ViewPath."chatlog.html";
-//require $ViewPath."chatlog.html";
-global $counter;
-$counter=1;
 
 session_start();
+date_default_timezone_set('Iran');
 
-$sendto = $_SESSION['Sendto'];
-echo "Sending Message to ".$sendto;
-
-if(isset($_SESSION['name'])){
-    $u = unserialize($_SESSION['USER']);
+if(isset($_SESSION['USER'])){
     
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $u = unserialize($_SESSION['USER']);
+    $sendfrom = $u->getUsername();
+    $sendto = $_SESSION['Sendto'];
+
+    $msg = new chat();
+    $msg->setSendTo($sendto);
+    $msg->setSendFrom($sendfrom);
+
+    if (isset($_POST["uiSendmsg"])) {
         $text = $_POST['uiMsg'];
-        $chatlog = 'userlog/'.$u->getUsername().'.html';
-        $fp = fopen($chatlog, 'a');
         if ($text!=""){
-            //$textmsg = $u->getUsername.date("h:i:sa").
-            fwrite($fp, "<div id='m".$counter."'>(".date("g:i A").") <b>".$_SESSION['name'].
-            "</b>: ".stripslashes(htmlspecialchars($text)));
-            $counter += 1;
+
+           // echo $text;
+            $msg->setText($text);
+
+            $sent = date('H:i')." ".date("Y-m-d");
+            $msg->setDate($sent);
+
+            $msg->SendMsg();
+
         }
-        fclose($fp);
     }
 
-    if(file_exists('userlog/'.$u->getUsername().'.html') && filesize('userlog/'.$u->getUsername().'.html') > 0){
-        $handle = fopen('userlog/'.$u->getUsername().'.html', "r");
-        $contents = fread($handle, filesize('userlog/'.$u->getUsername().'.html'));
-        fclose($handle);
-        echo $contents;
+    echo $msg->LoadChatHistory($sendfrom, $sendto);
+
+    if (isset($_POST['uiDelete'])){
+        echo "delete kon";
     }
+
+    
+
+    
 }
 
 
