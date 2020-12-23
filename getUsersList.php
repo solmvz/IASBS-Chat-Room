@@ -7,3 +7,4 @@ if(isset($_SESSION['USER'])) {
     $usersList = user::GetAllUsers();
     echo json_encode($usersList);
 }
+?>

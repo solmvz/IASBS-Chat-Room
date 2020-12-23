@@ -13,6 +13,8 @@ if(isset($_SESSION['USER'])){
     
     $u = unserialize($_SESSION['USER']);
     $sendfrom = $u->getUsername();
+    $_SESSION['Sendfrom'] = $sendfrom;
+
     $sendto = $_SESSION['Sendto'];
 
     $msg = new chat();
@@ -30,19 +32,22 @@ if(isset($_SESSION['USER'])){
             $msg->setDate($sent);
 
             $msg->SendMsg();
+            $text="";
 
         }
     }
 
-    echo $msg->LoadChatHistory($sendfrom, $sendto);
+   /* if (isset($_POST["mDelete"])){
+        // collect value of input field
+        //echo "DELETEM";
 
-    if (isset($_POST['uiDelete'])){
-        echo "delete kon";
+        echo ($_POST['mDelete']);
+        //$sendto = $_POST['uiSendto'];
+        
+        
     }
+    */
 
-    
-
-    
 }
 
 

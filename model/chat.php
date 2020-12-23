@@ -36,24 +36,26 @@ class chat
         return true;
     }
 
-    function LoadChatHistory($from, $to)
+    public function jsonSerialize(){
+        return get_object_vars($this);
+    }
+    
+    public static function LoadChatHistory($from, $to)
     {
         $paramTypes = "ss";
         $Parameters = array($from, $to);
         $result = database::ExecuteQuery('ChatHistory', $paramTypes, $Parameters);
-        $chathistory = "";
+        $chathistory = array();
         $i = 0;
         while ($row = $result->fetch_array())
         {
-            $mid = $row['id'];
-            $msender = $row['from'];
-            $mtext = $row['text'];
-            $mdate = $row['sent'];
+            $tempchat = new chat();
+            $tempchat->setID($row['id']);
+            $tempchat->setSendFrom($row['from']);
+            $tempchat->setText($row['text']);
+            $tempchat->setDate($row['sent']);
 
-            $chathistory = "<div name=msg value=".$mid.">".$chathistory.$msender.":".$mtext."(".$mdate.")".
-            "<input type=submit name='uiDelete' value=Delete />
-            <input type=submit name='uiEdit' value=Edit />
-            </div>";
+            $chathistory[$i++] = $tempchat->jsonSerialize();
         }
         return $chathistory;
     }
