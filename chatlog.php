@@ -37,16 +37,13 @@ if(isset($_SESSION['USER'])){
         }
     }
 
-   /* if (isset($_POST["mDelete"])){
-        // collect value of input field
-        //echo "DELETEM";
-
-        echo ($_POST['mDelete']);
-        //$sendto = $_POST['uiSendto'];
+   if (isset($_POST['mDelete'])){
         
+        $messageid = $_POST['mId'];
+        chat::DeleteMsg($messageid);
         
     }
-    */
+    
 
 }
 

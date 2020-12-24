@@ -60,7 +60,7 @@ class chat
         return $chathistory;
     }
 
-    function DeleteMsg($id){
+    public static function DeleteMsg($id){
         $paramTypes = "s";
         $Parameters = array($id);
         database::ExecuteQuery('DeleteMsg', $paramTypes, $Parameters);

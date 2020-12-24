@@ -15,11 +15,12 @@ $("#uiSendto").click(function(){
 });
 
 
-document.getElementById("showHistory").innerHTML = "<h6>Chat History:</h6>";
 
 var xmlhttp = new XMLHttpRequest();
-var x ="";
-var deleteButton = ""
+var x = "";
+var msg = "";
+var deleteButton = "";
+var mid = "";
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
@@ -27,15 +28,17 @@ xmlhttp.onreadystatechange = function() {
         var myObj = JSON.parse(this.responseText);
         for (i = 0; i < myObj.length; i++) {
 
-            //deleteButton = "<input type='submit' name='mDelete' value='"+myObj[i].id+"'/>";
-            //x += deleteButton;
-            x += "<span name='mID' value='"+myObj[i].id+"'>"+myObj[i].from + ": " + myObj[i].text + " (" + myObj[i].date + ")</span></br>";
-            
+            x += "<form method='POST' action=''>"
+            deleteButton = "<input type='submit' name='mDelete' value='Delete'/>";
+            x += deleteButton;
+            msg = myObj[i].from + ": " + myObj[i].text + " (" + myObj[i].date + ")</br>";
+            x += msg;
+            mid = "<input type='hidden' name='mId' value='"+myObj[i].id+"'></input>";
+            x += mid;
+            x += "</form>"
           }
 
         document.getElementById("showHistory").innerHTML = x;
-        
-
      }
 };
 xmlhttp.open("GET", "getChathistory.php", true);
