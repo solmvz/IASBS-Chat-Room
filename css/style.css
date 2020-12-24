@@ -1,56 +1,79 @@
-*{
-   /*border:1px solid black;*/
-   box-sizing: border-box;
-}
-
-/* div
+.grid_container
 {
-	text-align: left;
-	border:1px solid black;
-} */
-
-.header
-{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
     font-family: Tahoma;
-    font-size: small;
-	width:100%;
-	height:50px;
-	position:relative;
-	top:0px;
-	left:0px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: 30% 70%;
+    gap: 0px 0px;
+    grid-template-areas:
+      "profile chat"
+      "userlist chat";
+    /* border: 1px solid red; */
+    height: 600px;
 }
 
-.Footer
+.grid_profile
 {
-	position:relative;
-	width:100%;
-	height:30px;
-}
-
-.footer ul
-{
-    list-style-type: none; /*non-bullet ul*/
-}
-.footer li
-{
-    /* float: left;
-    display: inline;
-    width: 300px;
-    height: 50px; */
     font-family: Tahoma;
-    font-size: small;
-    /* text-align: left; */
+    /* border-style: groove; */
+    grid-area: profile;
+}
+.grid_userlist
+{
+    font-family: Tahoma;
+    grid-area: userlist;
+}
+.grid_chat
+{
+    font-family: Tahoma;
+    border: 1px solid pink;
+    grid-area: chat;
 }
 
-@media (max-width: 600px) 
+.pagination
 {
-   .Menu, .Content 
-   {
-    width: 100%;
-    height: auto;
-	position:relative;
-  }
+    color:rgb(90, 2, 90);
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: center;
+    list-style-type: none; 
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-left: 0px;
+    padding-left: 0px;
+    border-style: groove;
+}
+
+.chat1
+{
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    padding: auto;
+    border: 1px solid chartreuse;
+}
+.chat2
+{
+    width: 70%;
+    height: 70%;
+    margin: auto;
+    padding: auto;
+    border: 1px solid chocolate;
+}
+
+
+@media (max-width: 875px)
+{
+    .grid_container
+    {
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        font-size: smaller;
+    }
+    .userlist_pagination
+    {
+        font-size: smaller;
+    }
 }

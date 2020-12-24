@@ -21,7 +21,8 @@ class database
         $inputArray[] = &$ParamTypes;
         $j = count($Parameters);
         $ParameterQuestionMarks = "";
-        for($i=0;$i<$j;$i++){
+        for($i=0;$i<$j;$i++)
+        {
             $inputArray[] = &$Parameters[$i];
             $ParameterQuestionMarks.='?,';
         }
@@ -58,9 +59,6 @@ class database
 
         $connection->close();
         return $result;
-
     }
-
-
 }
 ?>

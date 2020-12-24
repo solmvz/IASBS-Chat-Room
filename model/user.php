@@ -1,5 +1,6 @@
 <?php
 require_once "database.php";
+
 class user
 {
     public $name;
@@ -39,11 +40,6 @@ class user
         return false;
     }
 
-    private function getUserAsaText()
-    {
-        return $this->username.' '.$this->password.' '.$this->name.' '.$this->family.PHP_EOL;
-    }
-
     private function IsUsernameExist()
     {
         $paramTypes = "s";
@@ -57,7 +53,8 @@ class user
 
     function Save()
     {
-        if(!$this->IsUsernameExist()) {
+        if(!$this->IsUsernameExist()) 
+        {
             $paramTypes = "sssss";
             $Parameters = array( $this->name, $this->family,
             $this->username, $this->password, $this->email);
@@ -67,7 +64,8 @@ class user
         return false;
     }
 
-    public function jsonSerialize(){
+    public function jsonSerialize()
+    {
         return get_object_vars($this);
     }
 
@@ -85,5 +83,15 @@ class user
             $usersList[$i++] = $tempUser->jsonSerialize();
         }
         return $usersList;
+    }
+
+    public function GetNameFamily()
+    {
+        $paramTypes = "ss";
+        $Parameters = array($this->username,$this->password);
+        $result = database::ExecuteQuery('GetNameFamily', $paramTypes, $Parameters);
+        $row = $result->fetch_array();
+        $temp = array($row['name'], $row['family'], $row['email']);
+        return $temp;
     }
 }

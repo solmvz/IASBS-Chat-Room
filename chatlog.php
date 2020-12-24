@@ -9,8 +9,8 @@ include $ViewPath."chatlog.html";
 session_start();
 date_default_timezone_set('Iran');
 
-if(isset($_SESSION['USER'])){
-    
+if(isset($_SESSION['USER']))
+{    
     $u = unserialize($_SESSION['USER']);
     $sendfrom = $u->getUsername();
     $_SESSION['Sendfrom'] = $sendfrom;
@@ -21,10 +21,11 @@ if(isset($_SESSION['USER'])){
     $msg->setSendTo($sendto);
     $msg->setSendFrom($sendfrom);
 
-    if (isset($_POST["uiSendmsg"])) {
+    if (isset($_POST["uiSendmsg"])) 
+    {
         $text = $_POST['uiMsg'];
-        if ($text!=""){
-
+        if ($text!="")
+        {
            // echo $text;
             $msg->setText($text);
 
@@ -33,18 +34,16 @@ if(isset($_SESSION['USER'])){
 
             $msg->SendMsg();
             $text="";
-
         }
     }
 
-   if (isset($_POST['mDelete'])){
+   if (isset($_POST['mDelete']))
+   {
         
         $messageid = $_POST['mId'];
         chat::DeleteMsg($messageid);
         
-    }
-    
-
+   }
 }
 
 

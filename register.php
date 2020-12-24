@@ -2,7 +2,6 @@
 require "config.php";
 require "model/user.php";
 include $ShareFolderPath."header.html";
-//include $ShareFolderPath."menu.html";
 
 $Message = '';
 $uiName_cv = "";
@@ -20,7 +19,8 @@ if(isset($_POST['uiRegister']))
     $uiEmail_cv = $_POST['uiEmail'];
 
     $validationMessage = validation();
-    if($validationMessage == "") {
+    if($validationMessage == "") 
+    {
         $u = new user();
         $u->setName($_POST['uiName']);
         $u->setFamily($_POST['uiFamily']);
@@ -36,30 +36,23 @@ if(isset($_POST['uiRegister']))
         $Message = $validationMessage;
 }
 
-
 include $ViewPath."register.html";
-
 include $ShareFolderPath."footer.html";
-
 
 function validation()
 {
     $Message = "";
     if($_POST["uiName"] == "")
         $Message = 'Enter your name'."<br/>";
-    if($_POST["uiFamily"] == "")
-        $Message .= 'Enter your family'."<br/>";
     if($_POST["uiUsername"] == "")
         $Message .= 'Enter your username.'."<br/>";
     if($_POST["uiPassword"] == "")
         $Message .= 'Enter your password'."<br/>";
     if($_POST["uiEmail"] == "")
         $Message .= 'Enter your Email'."<br/>";
-
     if($_POST["uiPassword"] != $_POST["uiConfirmPassword"])
-        $Message .= 'Password and confirmation password do not match.'."<br/>";
+        $Message .= 'Passwords do not match.'."<br/>";
 
     return $Message;
 }
-
 ?>

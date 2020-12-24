@@ -1,6 +1,8 @@
 <?php
 session_start();
 unset($_SESSION['USER']);
+unset($_SESSION['NFE']);
+
 require "config.php";
 require "model/user.php";
 include $ShareFolderPath."header.html";
@@ -15,12 +17,12 @@ if(isset($_POST['uiLogin']))
     if($u->checkUserPass())
     {
         $_SESSION['USER'] = serialize($u);
-        header('Location: contact.php');
+        $_SESSION['NFE'] = $u->GetNameFamily();
+        header('Location: chatroom.php');
     }
     $Message = 'Invalid username or password.';
 }
 
 include $ViewPath."login.html";
 include $ShareFolderPath."footer.html";
-
 ?>

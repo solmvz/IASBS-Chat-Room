@@ -1,5 +1,6 @@
 <?php
 require_once "database.php";
+
 class chat
 {
     public $id;
@@ -8,7 +9,6 @@ class chat
     public $text;
     public $date;
 
-    
     public function getID() { return $this->id; }
     public function setID($val) { $this->id = $val; }
 
@@ -19,7 +19,7 @@ class chat
     public function setSendTo($val) { $this->to = $val; } 
 
     public function getText() { return $this->text; }
-    public function setText($val){ $this->text = $val; }
+    public function setText($val) { $this->text = $val; }
 
     public function getDate() { return $this->date; }
     public function setDate($val) { $this->date = $val; } 
@@ -32,11 +32,11 @@ class chat
         $result = database::ExecuteQuery('AddMsg', $paramTypes, $Parameters);
         $row = $result->fetch_array();
         $this->setID($row["LAST_INSERT_ID()"]);
-        //echo "msg id is".$this->id;
         return true;
     }
 
-    public function jsonSerialize(){
+    public function jsonSerialize()
+    {
         return get_object_vars($this);
     }
     
@@ -51,7 +51,7 @@ class chat
         {
             $tempchat = new chat();
             $tempchat->setID($row['id']);
-            $tempchat->setSendFrom($row['from']);
+            $tempchat->setSendFrom($row['mfrom']);
             $tempchat->setText($row['text']);
             $tempchat->setDate($row['sent']);
 
@@ -60,11 +60,11 @@ class chat
         return $chathistory;
     }
 
-    public static function DeleteMsg($id){
+    public static function DeleteMsg($id)
+    {
         $paramTypes = "s";
         $Parameters = array($id);
         database::ExecuteQuery('DeleteMsg', $paramTypes, $Parameters);
     }
-
 }
 ?>

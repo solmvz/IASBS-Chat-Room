@@ -3,18 +3,20 @@
 	<title>Golan ChatRoom</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/header-footer.css"/>
 	<script src="js/validation.js"></script>
+	<script src="js/userlist.js"></script>
+	<script src="js/checkusername.js"></script>
+	<script src="js/chatlog.js"></script>
 	<?php
 		if (basename($_SERVER['PHP_SELF']) == 'index.php' || basename($_SERVER['PHP_SELF']) == 'register.php')
-			echo '<link rel="stylesheet" href="css/login.css" />';
+			echo '<link rel="stylesheet" href="css/login-register.css" />';
 		else
-			echo '<link rel="stylesheet" href="css/page.css" />';
+			echo '<link rel="stylesheet" href="css/style.css" />';
 	?>
 </head>
 <body>
 
 <div class="header">
-	<img class="imgheader" src="pic/golan1.png"/>
+	<img class="imgheader" src="pic/Golan1-LogoMakr.png"/>
 </div>
-<div class="Section">

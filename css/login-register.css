@@ -46,7 +46,7 @@ button:hover
     padding: 16px;
 }
 
-p
+.regitem
 {
     margin-top: 0;
     text-align: left;
@@ -69,13 +69,6 @@ label
     float: left;
 }
 
-.imgheader
-{
-    height: 100%;
-    max-width: 100%;
-    border-radius: 2em;
-}
-
 .loginContainer
 {
     width: 50%;
@@ -83,13 +76,13 @@ label
     margin: 0 auto;
 }
 
-.Section
+.section
 {
     position:relative;
     height: auto;
 }
 
-.Menu
+.menu
 {
     position:relative;
     left:0px;
@@ -97,10 +90,10 @@ label
     height: auto;
 }
 
-.Content
+.content
 {
     text-align: center;
-    position:relative;
+    position: relative;
     right:0px;
     width:100%;
 }

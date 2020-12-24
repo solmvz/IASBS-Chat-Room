@@ -1,16 +1,18 @@
-<div class="Content">
-    <div class="loginContainer">
-        <span class="error"><?php echo $Message; ?></span>
-        <form action="index.php" method="post">
-            <div class="container">
-                <label>Username</label>
-                <input type="text" placeholder="Enter Username" name="uiUsername">
-                <label>Password</label>
-                <input type="password" placeholder="Enter Password" name="uiPassword">
-                <button type="submit" name="uiLogin">Login</button>
+<div class="section">
+    <div class="content">
+        <div class="loginContainer">
+            <span class="error"><?php echo $Message; ?></span>
+            <form action="index.php" method="post">
+                <div class="container">
+                    <label>Username</label>
+                    <input type="text" placeholder="Enter Username" name="uiUsername">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter Password" name="uiPassword">
+                    <button type="submit" name="uiLogin">Login</button>
 
-                <a href="register.php">Register</a>
-            </div>
-        </form>
+                    <a href="register.php">Register</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
