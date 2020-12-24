@@ -1,6 +1,8 @@
 <?php
+
 require "config.php";
 require "model/user.php";
+
 include $ShareFolderPath."header.html";
 
 $Message = '';

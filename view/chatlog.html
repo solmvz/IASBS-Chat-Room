@@ -4,16 +4,29 @@
 
 <script>
     document.getElementById("showHistory").innerHTML = obj.id + ", " + obj.from;
+    document.location.reload(true)
 </script>
 
-<div id="wrapper">
-    <div id="menu">
-        <!-- <p class="logout"><a id="exit" href="chatroom.php">Exit Chat</a></p> -->
-        <div style="clear:both"></div>
+
+<div class="first_div">
+    <button style="position: relative; left: 0px; width: auto; height: auto;" onclick="location.href='chatroom.php'">Back</button>
+    <div class="second_div">
+        <div class="third_div">
+            <div class="wrapper" id="wrapper">
+                <div id="menu">
+                    <!-- <p class="logout"><a id="exit" href="chatroom.php">Exit Chat</a></p> -->
+                    <div style="clear:both"></div>
+                </div>
+                <form method="POST" action="">
+                    <input type="text" name="uiMsg" placeholder="Message"/>
+                    <input type="submit" name="uiSendmsg" value="Send"/>
+                </form>
+                <div id=showHistory> </div>
+            </div>
+        </div>
     </div>
-    <form method="POST" action="">
-        <input type="text" name="uiMsg" placeholder="Message"/>
-        <input type="submit" name="uiSendmsg" value="Send" />
-    </form>
-    <div id=showHistory> </div>
 </div>
+
+
+
+

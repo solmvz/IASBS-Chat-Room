@@ -21,14 +21,13 @@ else
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
-        // collect value of input field
         $sendto = $_POST['uiSendto'];
         if (!empty($sendto)) 
         {
             $_SESSION['Sendto'] = $sendto;
             header('Location: chatlog.php');
-            //echo $name;
         }
     }
+    
     include $ShareFolderPath."footer.html";
 }

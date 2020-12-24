@@ -62,13 +62,3 @@
     max-height: 50px;
     color: black;
 }
-
-@media (max-width: 600px) 
-{
-   .Menu, .Content 
-   {
-    width: 100%;
-    height: auto;
-	position:relative;
-  }
-}

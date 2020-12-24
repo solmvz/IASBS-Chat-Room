@@ -42,5 +42,4 @@ $(document).ready(function()
     };
     xmlhttp.open("GET", "getChathistory.php", true);
     xmlhttp.send();
-
 });

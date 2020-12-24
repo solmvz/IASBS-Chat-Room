@@ -23,7 +23,7 @@
                             <th>Family</th>
                         </tr>
                         <tr ng-repeat="r in lst | filter : paginate | filter : searchData">
-                            <td><input type="submit" name="uiSendto" value={{r.username}}></td>
+                            <td><input type="submit" name="uiSendto" value={{r.username}} style="width: 100%; cursor:pointer;"></td>
                             <td><a class="width100">{{r.name}}</a></td>
                             <td><a class="width100">{{r.family}}</a></td>
                         </tr>

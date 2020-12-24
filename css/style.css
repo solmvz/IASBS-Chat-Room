@@ -8,7 +8,6 @@
     grid-template-areas:
       "profile chat"
       "userlist chat";
-    border: 1px solid red;
     height: 600px;
 }
 
@@ -24,6 +23,7 @@
 }
 .grid_chat
 {
+    text-align: center;
     font-family: Tahoma;
     border: 1px solid black;
     grid-area: chat;
@@ -44,29 +44,48 @@
     border-style: groove;
 }
 
-/* .chat1
+.first_div
 {
+    border: 1px solid crimson;
+    text-align: center;
+    grid-area: chat;
+}
+.second_div
+{
+    position: relative;
+    top: 50px;
     width: 80%;
     height: 80%;
     margin: auto;
-    padding: auto;
-    border: 1px solid chartreuse;
+    border: 1px solid green;
+    background-color: rgb(90, 2, 90);
 }
-.chat2
+.third_div
 {
-    width: 70%;
+    position: relative;
+    top: 65px;
+    width: 70%; 
     height: 70%;
     margin: auto;
-    padding: auto;
-    border: 1px solid chocolate;
-} */
+    border: 1px saddlebrown;
+    background-color: white;
+}
 
+.wrapper
+{
+    width: 100%; 
+    height: 100%; 
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    text-align:justify; 
+}
 
 @media (max-width: 875px)
 {
     .grid_container
     {
         display: flex;
+        height: auto;
         flex-direction: column;
         width: auto;
         font-size: smaller;
@@ -74,5 +93,32 @@
     .userlist_pagination
     {
         font-size: smaller;
+    }
+    .first_div
+    {
+        position: static;
+        top: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 330px;
+        background-color: white;
+    }
+    .second_div
+    {
+        position: static;
+        top: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 295px;
+        background-color: white;
+    }
+    .third_div
+    {
+        position: static;
+        top: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 265px;
+        background-color: white;
     }
 }

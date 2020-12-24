@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 unset($_SESSION['USER']);
 unset($_SESSION['NFE']); //name family email in profile
@@ -25,4 +26,5 @@ if(isset($_POST['uiLogin']))
 
 include $ViewPath."login.html";
 include $ShareFolderPath."footer.html";
+
 ?>
