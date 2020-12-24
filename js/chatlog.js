@@ -11,7 +11,7 @@ $(document).ready(function()
     $("#uiSendto").click(function()
     {
         var sendto = $("#uiSendto").val();
-        $.post("userslist.php", {text: sendto});
+        $.post("chatlog.php", {text: sendto});
         alert(sendto);
     });
 

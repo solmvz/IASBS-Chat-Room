@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "config.php";
 require "model/user.php";
 
 if(!isset($_SESSION['USER'])) 
@@ -12,23 +13,22 @@ else
     $utemp = $_SESSION['NFE'];
     $WelcomeMessage = 'Welcome @'.$u->getUsername().'!';
 
-}
+    include $ShareFolderPath."header.html";
+    include $ShareFolderPath."chatroom.html";
+    include $ShareFolderPath."profile.html";
+    include $ShareFolderPath."userslist.html";
+    include $ShareFolderPath."chat.html";
 
-require "config.php";
-include $ShareFolderPath."header.html";
-include $ShareFolderPath."chatroom.html";
-include $ShareFolderPath."profile.html";
-include $ViewPath."userslist.html";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
-{
-    // collect value of input field
-    $sendto = $_POST['uiSendto'];
-    if (!empty($sendto)) {
-        $_SESSION['Sendto'] = $sendto;
-        header('Location: chatlog.php');
-        //echo $name;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    {
+        // collect value of input field
+        $sendto = $_POST['uiSendto'];
+        if (!empty($sendto)) 
+        {
+            $_SESSION['Sendto'] = $sendto;
+            header('Location: chatlog.php');
+            //echo $name;
+        }
     }
+    include $ShareFolderPath."footer.html";
 }
-
-include $ShareFolderPath."footer.html";

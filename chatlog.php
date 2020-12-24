@@ -4,8 +4,13 @@ require "config.php";
 require "model/user.php";
 require "model/chat.php";
 include $ShareFolderPath."header.html";
+include $ShareFolderPath."chatroom.html";
+include $ShareFolderPath."profile.html";
+include $ShareFolderPath."userslist.html";
+
 include $ViewPath."chatlog.html";
 
+include $ShareFolderPath."footer.html";
 session_start();
 date_default_timezone_set('Iran');
 
@@ -14,7 +19,6 @@ if(isset($_SESSION['USER']))
     $u = unserialize($_SESSION['USER']);
     $sendfrom = $u->getUsername();
     $_SESSION['Sendfrom'] = $sendfrom;
-
     $sendto = $_SESSION['Sendto'];
 
     $msg = new chat();
@@ -39,16 +43,10 @@ if(isset($_SESSION['USER']))
 
    if (isset($_POST['mDelete']))
    {
-        
         $messageid = $_POST['mId'];
-        chat::DeleteMsg($messageid);
-        
+        chat::DeleteMsg($messageid); 
    }
 }
 
 
-
-
 ?>
-
-

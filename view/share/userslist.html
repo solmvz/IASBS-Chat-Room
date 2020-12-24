@@ -14,7 +14,7 @@
         <div ng-app="UsersListApp">
             <input type="text" placeholder="Search..." ng-model="searchData" class="form-control" style="width: 100%; font-family: Tahoma;"/>
             <!--<input type="text" placeholder="Search on Name" ng-model="searchData.name" class="form-control" />-->
-            <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+            <form method="post" action="chatroom.php">
                 <div ng-controller="UsersListController">
                     <table class="userlist_pagination">
                         <tr style="text-align: left;">
@@ -23,7 +23,7 @@
                             <th>Family</th>
                         </tr>
                         <tr ng-repeat="r in lst | filter : paginate | filter : searchData">
-                            <td><input type="submit" name="uiSendto" value={{r.username}}/></td>
+                            <td><input type="submit" name="uiSendto" value={{r.username}}></td>
                             <td><a class="width100">{{r.name}}</a></td>
                             <td><a class="width100">{{r.family}}</a></td>
                         </tr>

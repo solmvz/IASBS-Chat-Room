@@ -1,7 +1,7 @@
 <?php
 session_start();
 unset($_SESSION['USER']);
-unset($_SESSION['NFE']);
+unset($_SESSION['NFE']); //name family email in profile
 
 require "config.php";
 require "model/user.php";
