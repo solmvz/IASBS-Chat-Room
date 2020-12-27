@@ -22,22 +22,26 @@ else
     $_SESSION['Sendfrom'] = $sendfrom;
     $sendto = $_SESSION['Sendto'];
 
+    if ($_SESSION['uiStatus'] == 0)
+    {
+    
+
     $msg = new chat();
     $msg->setSendTo($sendto);
     $msg->setSendFrom($sendfrom);
 
-    if (isset($_POST["uiSendmsg"])) 
-    {
-        $text = $_POST['uiMsg'];
-        if ($text!="")
-        {
-            $msg->setText($text);
+        if (isset($_POST["uiSendmsg"])) {
+            $text = $_POST['uiMsg'];
+            if ($text!=""){
+                $msg->setText($text);
 
-            $sent = date('H:i')." ".date("Y-m-d");
-            $msg->setDate($sent);
+                $sent = date('H:i')." ".date("Y-m-d");
+                $msg->setDate($sent);
 
-            $msg->SendMsg();
-            $text="";
+                $msg->SendMsg();
+                $text="";
+
+            }
         }
     }
 
@@ -57,6 +61,14 @@ else
         $mtext = $obj->text;
 
         chat::EditMsg($mid, $mtext);
+    }
+
+    if (isset($_POST['uiBlock'])){
+        user::BlockUser($sendfrom, $sendto);
+    }
+
+    if (isset($_POST['uiUnblock'])){
+        user::UnblockUser($sendfrom, $sendto);
     }
 
 }

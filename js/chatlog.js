@@ -47,6 +47,27 @@ $(document).ready(function()
     history.open("GET", "getChathistory.php", true);
     history.send();
     
+    var status = new XMLHttpRequest();
+    status.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+            if (this.responseText == 1)
+            { //user has blocked the contact
+                document.getElementById("unblockBtn").innerHTML = '<input type="submit" name="uiUnblock" value="Unblock"/>';
+            }
+            else if (this.responseText == 2)
+            { //user has been blocked by the contact
+                document.getElementById("blockStatus").innerHTML = "You Are Blocked!";
+            }
+            else
+            { 
+                document.getElementById("blockBtn").innerHTML = '<input type="submit" name="uiBlock" value="Block"/>'
+            }
+        }
+    };
+    status.open("GET", "getChatstatus.php", true);
+    status.send();
+
 });
 
 
