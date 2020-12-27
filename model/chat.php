@@ -66,5 +66,11 @@ class chat
         $Parameters = array($id);
         database::ExecuteQuery('DeleteMsg', $paramTypes, $Parameters);
     }
+
+    public static function EditMsg($id, $newtext){
+        $paramTypes = "ss";
+        $Parameters = array($id, $newtext);
+        database::ExecuteQuery('EditMsg', $paramTypes, $Parameters);
+    }
 }
 ?>

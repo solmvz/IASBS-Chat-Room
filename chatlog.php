@@ -40,11 +40,25 @@ else
             $text="";
         }
     }
+
+
     if (isset($_POST['mDelete']))
     {
         $messageid = $_POST['mId'];
         chat::DeleteMsg($messageid); 
     }
+
+    if (isset($_REQUEST['mEdit'])){
+        
+        $req = $_REQUEST['mEdit'];
+        $obj = json_decode($req);
+
+        $mid = $obj->id;
+        $mtext = $obj->text;
+
+        chat::EditMsg($mid, $mtext);
+    }
+
 }
 
 include $ShareFolderPath."header.html";
