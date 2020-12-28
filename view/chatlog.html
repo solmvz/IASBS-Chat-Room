@@ -8,16 +8,16 @@
 </script>
 
 <div class="first_div">
-    <button style="position: relative; left: 0px; width: auto; height: auto;" onclick="location.href='chatroom.php'">Back</button>
+    <button style="position: relative; left: 0px; width: 200px; height: 30px; cursor:pointer; border-radius: 8px;" onclick="location.href='chatroom.php'">Back to First Page</button>
     <div class="second_div">
         <div class="third_div">
             <div id=showHistory> </div>
             <form method="POST" action="">
-                <p id="blockStatus"></p>
-                <input type="text" name="uiMsg" placeholder="Message"/>
-                <input type="submit" name="uiSendmsg" value="Send"/>
+                <input id="msg" type="text" name="uiMsg" style="width: 70%; font-size: medium; border-radius: 8px;" placeholder="Message"/>
+                <input id="send" type="submit" name="uiSendmsg" style="cursor:pointer; border-radius: 8px;" value="Send"/>
                 <span id="blockBtn"></span>
                 <span id="unblockBtn"></span>
+                <p id="blockStatus"></p><br>
             </form>
         </div>
     </div>

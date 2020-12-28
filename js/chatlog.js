@@ -22,46 +22,61 @@ $(document).ready(function()
     var deleteButton = "";
     var editButton = "";
     
-    history.onreadystatechange = function() {
+    history.onreadystatechange = function() 
+    {
         if (this.readyState == 4 && this.status == 200) 
         {
             var myObj = JSON.parse(this.responseText);
             for (i = 0; i < myObj.length; i++) 
             {
                 x += "<form method='POST' action=''>"
-                deleteButton = "<input type='submit' name='mDelete' value='Delete'/>";
-                editButton = "<button onclick='editFunction(\""+ myObj[i].text + "\",\"" + myObj[i].id + "\")' >Edit</button>";
-                msg = " "+myObj[i].from + ": " + myObj[i].text + " (" + myObj[i].date + ")</br>";
+                deleteButton = "<input id='dlt' type='submit' name='mDelete' value='Delete'/>";
+                editButton = "<button id='edt' onclick='editFunction(\""+ myObj[i].text + "\",\"" + myObj[i].id + "\")' > Edit</button>";
+                msg = " " + myObj[i].from + ": " + myObj[i].text + " (" + myObj[i].date + ")</br>";
                 msgid = "<input type='hidden' name='mId' value='" + myObj[i].id + "'></input>";
-                x += deleteButton;
-                x += editButton;
+                x += "&nbsp;" + deleteButton;
+                x += " " + editButton;
                 x += msg;
                 x += msgid;
                 x += "</form>"
-              }
+
+                // if (this.responseText == 2)
+                // { //user has been blocked by the contact
+                //     alert("nemiyay inja pedarsag??");
+                //     deleteButton.style.disabled = true;
+                //     editButton.style.disabled = true;
+                // }
+            }
             document.getElementById("showHistory").innerHTML = x;
             ScrollToBottom();
          }
     };
+
     history.open("GET", "getChathistory.php", true);
     history.send();
     
     var status = new XMLHttpRequest();
     status.onreadystatechange = function() 
     {
-    if (this.readyState == 4 && this.status == 200) 
-    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
             if (this.responseText == 1)
             { //user has blocked the contact
-                document.getElementById("unblockBtn").innerHTML = '<input type="submit" name="uiUnblock" value="Unblock"/>';
+                document.getElementById('msg').style.visibility = 'visible';
+                document.getElementById('send').style.visibility = 'visible';
+                document.getElementById("unblockBtn").innerHTML = '<input type="submit" style="cursor:pointer; border-radius: 8px;" name="uiUnblock" value="Unblock"/>';
             }
             else if (this.responseText == 2)
             { //user has been blocked by the contact
-                document.getElementById("blockStatus").innerHTML = "You Are Blocked!";
+                document.getElementById('msg').style.visibility = 'hidden';
+                document.getElementById('send').style.visibility = 'hidden';
+                document.getElementById("blockStatus").innerHTML = "Oh Oh! The Other Golan Has Blocked You!";
             }
             else
             { 
-                document.getElementById("blockBtn").innerHTML = '<input type="submit" name="uiBlock" value="Block"/>'
+                document.getElementById('msg').style.visibility = 'visible';
+                document.getElementById('send').style.visibility = 'visible';
+                document.getElementById("blockBtn").innerHTML = '<input type="submit" style="cursor:pointer; border-radius: 8px;" name="uiBlock" value="Block"/>'
             }
         }
     };
