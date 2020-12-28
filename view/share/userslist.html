@@ -11,32 +11,32 @@
 <div class="grid_userlist">
     <fieldset style="width: auto; height: auto;" >
         <legend style="color:rgb(90, 2, 90);"><b>User List</b></legend>
-        <div ng-app="UsersListApp">
-            <input type="text" placeholder="Search..." ng-model="searchData" class="form-control" style="width: 100%; font-family: Tahoma;"/>
+        <div class="userlist" ng-app="UsersListApp">
+            <input type="text" placeholder="Search..." ng-model="searchData" class="form-control" style="width: 98%; margin: auto; font-family: Tahoma;"/>
             <!--<input type="text" placeholder="Search on Name" ng-model="searchData.name" class="form-control" />-->
             <form method="post" action="chatroom.php">
                 <div ng-controller="UsersListController">
-                    <table class="userlist_pagination">
+                    <table>
                         <tr style="text-align: left;">
                             <th>Username</th>
-                            <th>Name</th>
-                            <th>Family</th>
+                            <th>&nbsp;&nbsp;Name</th>
+                            <th>&nbsp;&nbsp;Family</th>
                         </tr>
                         <tr ng-repeat="r in lst | filter : paginate | filter : searchData">
-                            <td><input type="submit" name="uiSendto" value={{r.username}} style="width: 100%; cursor:pointer;"></td>
-                            <td><a class="width100">{{r.name}}</a></td>
-                            <td><a class="width100">{{r.family}}</a></td>
+                            <td><input type="submit" name="uiSendto" value={{r.username}} style="width: 100%; cursor:pointer; border-radius: 8px;"></td>
+                            <td><a class="width100">&nbsp;&nbsp;{{r.name}}</a></td>
+                            <td><a class="width100">&nbsp;&nbsp;{{r.family}}</a></td>
                         </tr>
                     </table>
                 </div>
             </form>
-            <div style="text-align:center" ng-show="showLoader">
+            <!-- <div style="text-align:center" ng-show="showLoader">
                 Loading...
-            </div>
-            <pagination class="pagination" total-items="totalItems" ng-model="currentPage"
+            </div> -->
+            <!-- <pagination total-items="totalItems" ng-model="currentPage"
                         max-size="5" boundary-links="true"
                         items-per-page="numPerPage" class="pagination-sm">
-            </pagination>
+            </pagination> -->
             <!-- <p>Total number of users: {{totalItems}}</p> -->
         </div>
     </fieldset>

@@ -3,33 +3,42 @@
     font-family: Tahoma;
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-rows: 30% 70%;
+    grid-template-rows: 37% 63%;
     gap: 0px 0px;
     grid-template-areas:
       "profile chat"
       "userlist chat";
-    height: 600px;
+    height: 500px;
 }
 
 .grid_profile
 {
     font-family: Tahoma;
     grid-area: profile;
+    /* border: 1px solid blue; */
+}
+.so_button
+{
+    text-align: center;
 }
 .grid_userlist
 {
     font-family: Tahoma;
     grid-area: userlist;
+    /* border: 1px solid black;
+    vertical-align: middle; */
 }
 .grid_chat
 {
     text-align: center;
     font-family: Tahoma;
-    border: 1px solid black;
     grid-area: chat;
+    background-image: url("../pic/ChatBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.pagination
+/* .pagination-sm
 {
     color:rgb(90, 2, 90);
     justify-content: flex-start;
@@ -42,13 +51,16 @@
     margin-left: 0px;
     padding-left: 0px;
     border-style: groove;
-}
+} */
 
 .first_div
 {
     border: 1px solid crimson;
     text-align: center;
     grid-area: chat;
+    background-image: url("../pic/ChatBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .second_div
 {
@@ -71,12 +83,41 @@
     background-color: white;
 }
 
+.userlist
+{
+    width: 100%; 
+    height: 70%;; 
+    overflow-y: scroll; 
+    text-align: justify; 
+}
+
 #showHistory
 {
     width: 100%; 
     height: 100%;; 
     overflow-y: scroll; 
     text-align: justify; 
+    
+}
+
+/* width */
+::-webkit-scrollbar 
+{
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+  
+  /* Handle */
+::-webkit-scrollbar-thumb 
+{
+    background:  rgb(90, 2, 90);
+    border-radius: 10px;
 }
 
 @media (max-width: 875px)
@@ -89,9 +130,10 @@
         width: auto;
         font-size: smaller;
     }
-    .userlist_pagination
+    .userlist
     {
         font-size: smaller;
+        height: 150px;
     }
     .first_div
     {

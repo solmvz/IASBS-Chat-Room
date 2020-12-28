@@ -7,15 +7,17 @@
     document.getElementById("showHistory").innerHTML = obj.id + ", " + obj.from;
 </script>
 
-
 <div class="first_div">
     <button style="position: relative; left: 0px; width: auto; height: auto;" onclick="location.href='chatroom.php'">Back</button>
     <div class="second_div">
         <div class="third_div">
             <div id=showHistory> </div>
             <form method="POST" action="">
+                <p id="blockStatus"></p>
                 <input type="text" name="uiMsg" placeholder="Message"/>
                 <input type="submit" name="uiSendmsg" value="Send"/>
+                <span id="blockBtn"></span>
+                <span id="unblockBtn"></span>
             </form>
         </div>
     </div>

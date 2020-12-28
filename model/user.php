@@ -94,4 +94,31 @@ class user
         $temp = array($row['name'], $row['family'], $row['email']);
         return $temp;
     }
+
+    public static function BlockUser($user1, $user2){
+        $paramTypes = "ss";
+        $Parameters = array($user1, $user2);
+        database::ExecuteQuery('AddBlocklist', $paramTypes, $Parameters);
+    }
+
+    public static function UnblockUser($user1, $user2){
+        $paramTypes = "ss";
+        $Parameters = array($user1, $user2);
+        database::ExecuteQuery('removeBlocklist', $paramTypes, $Parameters);
+    }
+
+    public static function CheckBlocklist($user1, $user2){
+        $paramTypes = "ss";
+        $Parameters = array($user1, $user2);
+        $result = database::ExecuteQuery('CheckBlocklist', $paramTypes, $Parameters);
+        if(mysqli_num_rows($result) > 0){
+            $row = $result->fetch_array();
+            $status = $row['status'];
+            return $status;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

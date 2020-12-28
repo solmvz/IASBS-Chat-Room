@@ -7,4 +7,3 @@ $db_name = 'chatroom';
 $ViewPath = 'view/';
 $ShareFolderPath = 'view/share/';
 ?>
-

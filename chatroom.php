@@ -1,7 +1,8 @@
 <?php
+ob_start();
 session_start();
-require "config.php";
-require "model/user.php";
+require_once "config.php";
+require_once "model/user.php";
 
 if(!isset($_SESSION['USER'])) 
 {
@@ -22,12 +23,14 @@ else
     if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {
         $sendto = $_POST['uiSendto'];
+        
         if (!empty($sendto)) 
         {
             $_SESSION['Sendto'] = $sendto;
             header('Location: chatlog.php');
+            exit;
         }
     }
-    
     include $ShareFolderPath."footer.html";
 }
+?>

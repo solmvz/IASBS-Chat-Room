@@ -6,6 +6,7 @@ require_once "model/user.php";
 if(isset($_SESSION['USER'])) 
 {
     $usersList = user::GetAllUsers();
+    echo "        ";
     echo json_encode($usersList);
 }
 ?>

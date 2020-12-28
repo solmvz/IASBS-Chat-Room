@@ -7,18 +7,19 @@ app.controller('UsersListController', function ($scope, $http)
     {
         $scope.lst = d.data;
         $scope.totalItems = $scope.lst.length;
-        $scope.currentPage = 1;
-        $scope.numPerPage = 5;
+        return d;
+        // $scope.currentPage = 1;
+        // $scope.numPerPage = 5;
 
-        $scope.paginate = function (value) 
-        {
-            var begin, end, index;
-            begin = ($scope.currentPage - 1) * $scope.numPerPage;
-            end = begin + $scope.numPerPage;
-            index = $scope.lst.indexOf(value);
-            return (begin <= index && index < end);
-        };
-        $scope.showLoader = false;
+        // $scope.paginate = function (value) 
+        // {
+        //     var begin, end, index;
+        //     begin = ($scope.currentPage - 1) * $scope.numPerPage;
+        //     end = begin + $scope.numPerPage;
+        //     index = $scope.lst.indexOf(value);
+        //     return (begin <= index && index < end);
+        // };
+        // $scope.showLoader = false;
 
     }, function (error) 
     {

@@ -1,12 +1,10 @@
 <?php
-
 session_start();
-
 date_default_timezone_set('Iran');
 
-require "config.php";
-require "model/user.php";
-require "model/chat.php";
+require_once "config.php";
+require_once "model/user.php";
+require_once "model/chat.php";
 
 if(!isset($_SESSION['USER'])) 
 {
@@ -22,31 +20,55 @@ else
     $_SESSION['Sendfrom'] = $sendfrom;
     $sendto = $_SESSION['Sendto'];
 
-    $msg = new chat();
-    $msg->setSendTo($sendto);
-    $msg->setSendFrom($sendfrom);
-
-    if (isset($_POST["uiSendmsg"])) 
+    if ($_SESSION['uiStatus'] == 0)
     {
-        $text = $_POST['uiMsg'];
-        if ($text!="")
+        $msg = new chat();
+        $msg->setSendTo($sendto);
+        $msg->setSendFrom($sendfrom);
+
+        if (isset($_POST["uiSendmsg"])) 
         {
-            $msg->setText($text);
+            $text = $_POST['uiMsg'];
+            if ($text!="")
+            {
+                $msg->setText($text);
 
-            $sent = date('H:i')." ".date("Y-m-d");
-            $msg->setDate($sent);
+                $sent = date('H:i')." ".date("Y-m-d");
+                $msg->setDate($sent);
 
-            $msg->SendMsg();
-            $text="";
+                $msg->SendMsg();
+                $text="";
+            }
         }
     }
+
     if (isset($_POST['mDelete']))
     {
         $messageid = $_POST['mId'];
         chat::DeleteMsg($messageid); 
     }
-}
 
+    if (isset($_REQUEST['mEdit']))
+    {
+        $req = $_REQUEST['mEdit'];
+        $obj = json_decode($req);
+
+        $mid = $obj->id;
+        $mtext = $obj->text;
+
+        chat::EditMsg($mid, $mtext);
+    }
+
+    if (isset($_POST['uiBlock']))
+    {
+        user::BlockUser($sendfrom, $sendto);
+    }
+
+    if (isset($_POST['uiUnblock']))
+    {
+        user::UnblockUser($sendfrom, $sendto);
+    }
+}
 include $ShareFolderPath."header.html";
 include $ShareFolderPath."chatroom.html";
 include $ShareFolderPath."profile.html";
