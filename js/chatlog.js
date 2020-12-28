@@ -38,6 +38,7 @@ $(document).ready(function()
                 x += "</form>"
             }
             document.getElementById("showHistory").innerHTML = x;
+            ScrollToBottom();
         }
     };
     xmlhttp.open("GET", "getChathistory.php", true);

@@ -71,13 +71,12 @@
     background-color: white;
 }
 
-.wrapper
+#showHistory
 {
     width: 100%; 
-    height: 100%; 
-    overflow-x: hidden; 
-    overflow-y: auto; 
-    text-align:justify; 
+    height: 100%;; 
+    overflow-y: scroll; 
+    text-align: justify; 
 }
 
 @media (max-width: 875px)
